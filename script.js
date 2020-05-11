@@ -14,11 +14,18 @@ class Calculator {
   }
 
   appendNumber(number) {
-    // WRITE CODE HERE!
+    if (number === '.' && this.currentOperand.includes('.')) return
+    this.currentOperand = this.currentOperand.toString() + number.toString()
   }
 
   chooseOperation(operation) {
-    // WRITE CODE HERE!
+    if (this.currentOperand === '') return
+    if (this.previousOperand !== '') {
+      this.compute()
+    }
+    this.operation = operation
+    this.previousOperand = this.currentOperand
+    this.currentOperand = ''
   }
 
   compute() {
